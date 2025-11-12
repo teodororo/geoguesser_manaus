@@ -10,8 +10,8 @@
   <body>
     <div id="root"></div>
     <script type="module">
-      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/mountable@0.39.0/build/stlite.js";
-      mount(
+      import * as stlite from "https://cdn.jsdelivr.net/npm/@stlite/mountable@0.39.0/build/stlite.js";
+      stlite.mount(
         {
           entrypoint: "main.py",
           files: {
