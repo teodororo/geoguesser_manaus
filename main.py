@@ -5,8 +5,10 @@ from game import GeoGuesserManaus
 
 # Lista de fotos com coordenadas aproximadas
 fotos = [
-    {"path": "fotos/bernardo-ramos.jpg", "lat": -3.134000, "lon": -60.028000},
-    {"path": "fotos/mercadao.jpg", "lat": -3.140000, "lon": -60.024000}
+    {"path": "https://raw.githubusercontent.com/teodororo/geoguesser_manaus/refs/heads/main/fotos/bernardo-ramos.jpg",
+        "lat": -3.134000, "lon": -60.028000},
+    {"path": "https://raw.githubusercontent.com/teodororo/geoguesser_manaus/refs/heads/main/fotos/mercadao.jpg",
+        "lat": -3.140000, "lon": -60.024000}
 ]
 
 # Inicializar o jogo no session_state
@@ -136,5 +138,4 @@ if st.session_state.chute_feito and st.session_state.resultado:
             st.session_state.jogo = GeoGuesserManaus(fotos, pontos_iniciais=0)
             st.session_state.chute_feito = False
             st.session_state.resultado = None
-            st.rerun()
             st.rerun()
