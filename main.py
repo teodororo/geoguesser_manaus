@@ -5,9 +5,9 @@ from game import GeoGuesserManaus
 
 # Lista de fotos com coordenadas aproximadas
 fotos = [
-    {"path": "https://raw.githubusercontent.com/teodororo/geoguesser_manaus/refs/heads/main/fotos/bernardo-ramos.jpg",
+    {"path": "./fotos/bernardo-ramos.jpg",
         "lat": -3.134000, "lon": -60.028000},
-    {"path": "https://raw.githubusercontent.com/teodororo/geoguesser_manaus/refs/heads/main/fotos/mercadao.jpg",
+    {"path": "./fotos/mercadao.jpg",
         "lat": -3.140000, "lon": -60.024000}
 ]
 
