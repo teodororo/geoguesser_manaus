@@ -1,0 +1,1 @@
+# geoguesser_manaus
