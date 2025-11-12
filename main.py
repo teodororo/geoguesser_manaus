@@ -40,8 +40,7 @@ st.write(str(jogo))
 
 foto_atual = jogo[jogo.index]
 st.image(foto_atual["path"],
-         caption=f"Foto {jogo.index + 1} de {len(jogo)}",
-         width='stretch')
+         caption=f"Foto {jogo.index + 1} de {len(jogo)}")
 
 st.write("**Escolha onde você acha que a foto foi tirada:**")
 
@@ -79,7 +78,7 @@ if lat_input and lon_input:
         'lat': lat_input,
         'lon': lon_input,
         'color': '#0044FF',  # Azul para o chute
-        'size': 100
+        'size': 250
     })
 
 # Se o chute foi feito, mostrar o local correto (verde)
@@ -87,8 +86,8 @@ if st.session_state.chute_feito:
     map_data.append({
         'lat': foto_atual['lat'],
         'lon': foto_atual['lon'],
-        'color': '#00FF00',  # Verde para o correto
-        'size': 150
+        'color': '#00FF00',  # Verde para a resposta
+        'size': 250
     })
 
 # Criar DataFrame para o mapa
