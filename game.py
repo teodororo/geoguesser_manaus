@@ -2,10 +2,14 @@ from utils import distancia, ler_pontuacao, salvar_pontuacao
 
 
 class GeoGuesserManaus:
-    def __init__(self, fotos):
+    def __init__(self, fotos, pontos_iniciais=None):
         self.fotos = fotos
         self.index = 0
-        self.pontos = ler_pontuacao()
+        # Se pontos_iniciais for especificado, usa ele; senão, lê do arquivo
+        if pontos_iniciais is not None:
+            self.pontos = pontos_iniciais
+        else:
+            self.pontos = ler_pontuacao()
 
     def __len__(self):
         return len(self.fotos)
@@ -27,6 +31,7 @@ class GeoGuesserManaus:
         foto = self.fotos[self.index]
         real = (foto["lat"], foto["lon"])
         d = distancia(real, chute_latlon)
+
         if d <= 500:
             pontos = 2
             resultado = "🎯 Acertou em cheio!"
@@ -36,6 +41,7 @@ class GeoGuesserManaus:
         else:
             pontos = 0
             resultado = "❌ Errou!"
+
         self.pontos += pontos
         salvar_pontuacao(self.pontos)
         return resultado, d, pontos

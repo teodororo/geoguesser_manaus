@@ -13,14 +13,19 @@ def distancia(coord1, coord2):
 
 
 def ler_pontuacao():
+    """Lê pontuação salva. No stlite, retorna sempre 0."""
     try:
         with open("pontuacao.txt", "r") as f:
             conteudo = f.read().strip()
             return int(conteudo) if conteudo else 0
-    except FileNotFoundError:
+    except (FileNotFoundError, PermissionError):
         return 0
 
 
 def salvar_pontuacao(pontos):
-    with open("pontuacao.txt", "w") as f:
-        f.write(str(pontos))
+    """Salva pontuação. No stlite, pode não funcionar."""
+    try:
+        with open("pontuacao.txt", "w") as f:
+            f.write(str(pontos))
+    except (PermissionError, OSError):
+        pass  # Silenciosamente ignora erros de escrita no stlite

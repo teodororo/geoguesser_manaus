@@ -2,26 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GeoGuesser Manaus</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.7.1/build/stlite.css"
+    />
   </head>
   <body>
     <div id="root"></div>
     <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.7.1/build/stlite.js"></script>
     <script>
-      fetch("main.py")
-        .then((response) => response.text())
-        .then((code) => {
-          stlite.mount(
-            {
-              entrypoint: "main.py",
-              files: {
-                "main.py": code,
-              },
-              requirements: ["streamlit-folium", "folium"],
+      Promise.all([
+        fetch("main.py").then((r) => r.text()),
+        fetch("game.py").then((r) => r.text()),
+        fetch("utils.py").then((r) => r.text()),
+      ]).then(([mainCode, gameCode, utilsCode]) => {
+        stlite.mount(
+          {
+            entrypoint: "main.py",
+            files: {
+              "main.py": mainCode,
+              "game.py": gameCode,
+              "utils.py": utilsCode,
+              "pontuacao.txt": "0",
             },
-            document.getElementById("root")
-          );
-        });
+            requirements: [], // Sem requirements extras, usa apenas stdlib
+          },
+          document.getElementById("root")
+        );
+      });
     </script>
   </body>
 </html>
